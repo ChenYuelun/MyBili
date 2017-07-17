@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="#fb7299"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/iv_title_menu"
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_navigation_drawer" />
+
+    <ImageView
+        android:id="@+id/iv_title_userimage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/bili_default_avatar" />
+
+
+    <TextView
+        android:id="@+id/tv_title_username"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:text="未登录"
+        android:textColor="#fff" />
+
+    <ImageView
+        android:id="@+id/iv_title_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_bml_home" />
+
+    <ImageView
+        android:id="@+id/iv_title_game_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/ic_menu_top_game_center" />
+
+    <ImageView
+        android:id="@+id/iv_title_download"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/ic_toolbar_menu_download" />
+
+    <ImageView
+        android:id="@+id/iv_title_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/ic_download_search" />
+
+</LinearLayout>
+
+
