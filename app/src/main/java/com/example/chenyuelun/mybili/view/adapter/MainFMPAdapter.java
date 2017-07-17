@@ -34,7 +34,6 @@ public class MainFMPAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        Log.e("TAG", "fragments.size()=="+fragments.size());
         return fragments.size();
 
     }

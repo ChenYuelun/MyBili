@@ -10,6 +10,6 @@ import retrofit2.http.GET;
  */
 
 public interface LoadNet {
-    @GET
+    @GET("AppNewIndex/common?_device=android&appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&scale=hdpi&ts=1490013188000&sign=92541a11ed62841120e786e637b9db3b")
     Observable<LiveBean> getLiveData();
 }
