@@ -12,10 +12,10 @@ import com.example.chenyuelun.mybili.model.bean.LiveBean;
 import com.example.chenyuelun.mybili.view.adapter.LiveRvAdapter;
 
 import butterknife.BindView;
-import butterknife.Unbinder;
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Consumer;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -29,7 +29,6 @@ public class LiveFragment extends BaseFragment {
 
     @BindView(R.id.rv_live)
     RecyclerView rvLive;
-    Unbinder unbinder;
     private LiveRvAdapter liveRvAdapter;
 
     @Override
@@ -51,11 +50,25 @@ public class LiveFragment extends BaseFragment {
                 .getLiveData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<LiveBean>() {
+                .subscribe(new Observer<LiveBean>() {
                     @Override
-                    public void accept(@NonNull LiveBean liveBean) throws Exception {
-                        Log.e("TAG", "liveBean==" + liveBean.getMessage());
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull LiveBean liveBean) {
                         setData(liveBean);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.e("TAG", "联网获取数据失败==" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
                     }
                 });
     }
@@ -87,12 +100,5 @@ public class LiveFragment extends BaseFragment {
 //        //结束轮播
 //        banner.stopAutoPlay();
 //    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
-
 
 }

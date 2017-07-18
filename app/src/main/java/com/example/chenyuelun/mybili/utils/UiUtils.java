@@ -3,6 +3,7 @@ package com.example.chenyuelun.mybili.utils;
 import android.content.Context;
 import android.os.Process;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.chenyuelun.mybili.common.MyApplication;
 
@@ -35,5 +36,16 @@ public class UiUtils {
     public static String getString(Context context, String str, int stringId){
         String s = String.format(context.getResources().getString(stringId), str);
         return s;
+    }
+
+
+    //吐司
+    public static void showToast(final String msg) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

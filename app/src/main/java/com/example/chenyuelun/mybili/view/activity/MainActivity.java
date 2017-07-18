@@ -2,9 +2,14 @@ package com.example.chenyuelun.mybili.view.activity;
 
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,6 +19,7 @@ import android.widget.TextView;
 import com.example.chenyuelun.mybili.R;
 import com.example.chenyuelun.mybili.base.BaseFragment;
 import com.example.chenyuelun.mybili.utils.DensityUtils;
+import com.example.chenyuelun.mybili.utils.UiUtils;
 import com.example.chenyuelun.mybili.view.adapter.MainFMPAdapter;
 import com.example.chenyuelun.mybili.view.fragment.DynamicFragment;
 import com.example.chenyuelun.mybili.view.fragment.LiveFragment;
@@ -50,6 +56,14 @@ public class MainActivity extends AppCompatActivity {
     TabLayout mainTablayout;
     @BindView(R.id.main_viewpager)
     ViewPager mainViewpager;
+    @BindView(R.id.home_toolbar)
+    Toolbar homeToolbar;
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
+    @BindView(R.id.nav_view)
+    NavigationView navView;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
     private Unbinder bind;
     private List<BaseFragment> fragments;
     private MainFMPAdapter mainFMPAdapter;
@@ -59,8 +73,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bind = ButterKnife.bind(this);
+        setSupportActionBar(homeToolbar);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
+//            localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
+//        }
         initData();
+        initListener();
+    }
 
+    private void initListener() {
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UiUtils.showToast("这是小按钮");
+            }
+        });
+
+        ivTitleMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }else {
+                    drawerLayout.openDrawer(GravityCompat.START);
+                }
+            }
+        });
     }
 
     private void initData() {
@@ -119,6 +158,18 @@ public class MainActivity extends AppCompatActivity {
             params.rightMargin = right;
             child.setLayoutParams(params);
             child.invalidate();
+        }
+    }
+
+
+    //监听返回键 如果菜单是打开就关闭
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
     }
 }

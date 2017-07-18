@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_scrollFlags="scroll|enterAlways"
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:background="#fb7299"
@@ -8,10 +9,13 @@
     android:orientation="horizontal">
 
     <ImageView
+        android:padding="10dp"
         android:id="@+id/iv_title_menu"
         android:layout_width="10dp"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_navigation_drawer" />
+
+
 
     <ImageView
         android:id="@+id/iv_title_userimage"
