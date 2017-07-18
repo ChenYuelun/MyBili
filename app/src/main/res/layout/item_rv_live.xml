@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:id="@+id/ll_zhuanqu"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_entrance_icon"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:textColor="#000"
+            android:textSize="15sp"
+            tools:text="绘画专区"
+            android:id="@+id/tv_name"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/ic_right_arrow_bold"
+            android:id="@+id/tv_count"
+            android:textColor="#000"
+            tools:text="当前58个直播"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_live_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <FrameLayout
+        android:layout_margin="10dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="12sp"
+            android:id="@+id/tv_more"
+            android:text="查看更多"
+            android:textColor="#000"
+            android:gravity="center"
+            android:background="@drawable/item_live_item_bg"
+            android:layout_width="100dp"
+            android:layout_height="40dp" />
+
+        <TextView
+
+            android:layout_gravity="end|center_vertical"
+            android:id="@+id/tv_refesh"
+            android:textColor="#000"
+            android:textSize="10sp"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/ic_refresh_pink"
+            android:text="@string/countfresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
+
+</LinearLayout>

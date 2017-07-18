@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rg_live"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <RadioButton
+        android:id="@+id/rb_live_anchor"
+        style="@style/LiveRbStyle"
+        android:drawableTop="@drawable/live_home_follow_anchor"
+        android:text="关注" />
+
+    <RadioButton
+        android:id="@+id/rb_live_center"
+        style="@style/LiveRbStyle"
+        android:drawableTop="@drawable/live_home_live_center"
+        android:text="中心" />
+
+    <RadioButton
+        android:id="@+id/rb_live_video"
+        style="@style/LiveRbStyle"
+        android:drawableTop="@drawable/live_home_clip_video"
+        android:text="小视频" />
+
+    <RadioButton
+        android:id="@+id/rb_live_search"
+        style="@style/LiveRbStyle"
+        android:drawableTop="@drawable/live_home_search_room"
+        android:text="搜索" />
+
+    <RadioButton
+        android:id="@+id/rb_live_category"
+        style="@style/LiveRbStyle"
+        android:drawableTop="@drawable/live_home_all_category"
+        android:text="分类" />
+
+</RadioGroup>

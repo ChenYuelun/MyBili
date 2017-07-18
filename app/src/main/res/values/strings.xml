@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyBili</string>
+    <string name="countfresh">%1$s条新动态点击刷新</string>
+    <string name="count_live">当前%1$s个直播</string>
 </resources>

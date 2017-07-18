@@ -1,5 +1,6 @@
 package com.example.chenyuelun.mybili.utils;
 
+import android.content.Context;
 import android.os.Process;
 import android.view.View;
 
@@ -27,5 +28,12 @@ public class UiUtils {
             MyApplication.getHandler().post(runnable);
         }
 
+    }
+
+
+    //拼接字符串
+    public static String getString(Context context, String str, int stringId){
+        String s = String.format(context.getResources().getString(stringId), str);
+        return s;
     }
 }
