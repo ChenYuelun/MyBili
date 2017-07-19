@@ -34,6 +34,7 @@ public class LiveRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
 
     private LiveBean.DataBean data;
+    private OnItemClicklistener onItemClicklistener;
 
     public LiveRvAdapter(Context context) {
         this.context = context;
@@ -123,6 +124,15 @@ public class LiveRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             rvLiveItem.setAdapter(liveItemRvAdapter);
             GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 2);
             rvLiveItem.setLayoutManager(gridLayoutManager);
+            rvLiveItem.setNestedScrollingEnabled(false);
+            liveItemRvAdapter.setOnItemClickListener(new LiveItemRvAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClicked(LiveBean.DataBean.PartitionsBean.LivesBean livesBean) {
+                    if(onItemClicklistener != null) {
+                        onItemClicklistener.onLiveClicked(livesBean);
+                    }
+                }
+            });
         }
     }
 
@@ -137,6 +147,11 @@ public class LiveRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public void setData(int position) {
             super.setData(position);
             initBanner(data.getBanner());
+            if(banner!=null) {
+                if(onItemClicklistener !=null) {
+                    onItemClicklistener.onBannerStart(banner);
+                }
+            }
         }
 
 
@@ -154,6 +169,8 @@ public class LiveRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             this.banner.setIndicatorGravity(BannerConfig.RIGHT);
             //banner设置方法全部调用完毕时最后调用
             this.banner.start();
+
+
         }
 
 
@@ -190,5 +207,14 @@ public class LiveRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public FootHolder(View itemView) {
             super(itemView);
         }
+    }
+
+    public void setOnItemClicklistener(OnItemClicklistener onItemClicklistener){
+        this.onItemClicklistener = onItemClicklistener;
+    }
+
+    public interface OnItemClicklistener {
+        void onLiveClicked(LiveBean.DataBean.PartitionsBean.LivesBean livesBean);
+        void onBannerStart(Banner banner);
     }
 }

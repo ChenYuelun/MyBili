@@ -15,6 +15,9 @@ public class MyApplication extends Application {
 
     //切换线程用到
     private static Handler handler;
+    public MyApplication(){
+        context = this;
+    }
 
     public static Handler getHandler() {
         return handler;
@@ -22,7 +25,6 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        context = this;
         handler = new Handler();
     }
 

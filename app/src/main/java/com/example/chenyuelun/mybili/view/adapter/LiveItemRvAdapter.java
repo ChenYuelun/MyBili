@@ -24,6 +24,7 @@ import butterknife.ButterKnife;
 public class LiveItemRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final Context context;
     private final List<LiveBean.DataBean.PartitionsBean.LivesBean> datas;
+    private OnItemClickListener listener;
 
 
     public LiveItemRvAdapter(Context context, List<LiveBean.DataBean.PartitionsBean.LivesBean> lives) {
@@ -49,6 +50,7 @@ public class LiveItemRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
+        private final View view;
         @BindView(R.id.iv_src)
         ImageView ivSrc;
         @BindView(R.id.tv_title)
@@ -59,14 +61,33 @@ public class LiveItemRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         TextView tvOnline;
         public ViewHolder(View itemView) {
             super(itemView);
+            this.view = itemView;
             ButterKnife.bind(this, itemView);
+
         }
 
-        public void setData(LiveBean.DataBean.PartitionsBean.LivesBean livesBean) {
+        public void setData(final LiveBean.DataBean.PartitionsBean.LivesBean livesBean) {
             Glide.with(context).load(livesBean.getCover().getSrc()).into(ivSrc);
             tvTitle.setText(livesBean.getTitle());
             tvOwnerName.setText(livesBean.getOwner().getName());
             tvOnline.setText(livesBean.getOnline()+"");
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    UiUtils.showToast(livesBean.getTitle());
+                    if(listener!=null) {
+                        listener.onItemClicked(livesBean);
+                    }
+                }
+            });
         }
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
+    }
+
+    public interface OnItemClickListener{
+        void onItemClicked(LiveBean.DataBean.PartitionsBean.LivesBean livesBean);
     }
 }

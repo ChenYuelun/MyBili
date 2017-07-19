@@ -82,6 +82,8 @@ public abstract class LoadingView extends FrameLayout {
             return;
         }
 
+
+
     }
 
 

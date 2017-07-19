@@ -7,7 +7,6 @@ import android.widget.Toast;
 
 import com.example.chenyuelun.mybili.common.MyApplication;
 
-import static com.example.chenyuelun.mybili.common.MyApplication.getContext;
 
 /**
  * Created by chenyuelun on 2017/7/17.
@@ -47,5 +46,10 @@ public class UiUtils {
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+
+    public static Context getContext(){
+        return MyApplication.getContext();
     }
 }
