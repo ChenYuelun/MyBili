@@ -55,9 +55,5 @@ public abstract class BaseFragment extends Fragment {
 
     public abstract int getLayoutId();
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        bind.unbind();
-    }
+
 }

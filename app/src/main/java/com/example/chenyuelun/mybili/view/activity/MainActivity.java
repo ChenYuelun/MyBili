@@ -3,6 +3,7 @@ package com.example.chenyuelun.mybili.view.activity;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -12,7 +13,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
@@ -205,4 +208,34 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
+    boolean isExit = false;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (!isExit) {
+                UiUtils.showToast("再按一次退出软件");
+                isExit = true;
+                Log.e("TAG", "isExit==" + isExit);
+
+                new CountDownTimer(2000, 1000) {
+
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        isExit = false;
+                        Log.e("TAG", "isExit==" + isExit);
+                    }
+                }.start();
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 }

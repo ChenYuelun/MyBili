@@ -1,10 +1,13 @@
 package com.example.chenyuelun.mybili.view.activity;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.chenyuelun.mybili.R;
 
@@ -18,9 +21,13 @@ public class LivePlayActivity extends AppCompatActivity {
 
     @BindView(R.id.videoview)
     SurfaceView videoview;
+    @BindView(R.id.iv_loading)
+    ImageView ivLoading;
     private SurfaceHolder holder;
     private IjkMediaPlayer ijkMediaPlayer;
     private String url;
+    private AnimationDrawable anim;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +36,19 @@ public class LivePlayActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         url = getIntent().getStringExtra("url");
+        startAnim();
         initVideo();
+
+    }
+
+    private void startAnim() {
+        anim = (AnimationDrawable) ivLoading.getBackground();
+        anim.start();
+    }
+
+    private void stopAnim() {
+        anim.stop();
+        ivLoading.setVisibility(View.GONE);
     }
 
     private void initVideo() {
@@ -60,10 +79,13 @@ public class LivePlayActivity extends AppCompatActivity {
                 }
             });
             ijkMediaPlayer.prepareAsync();
+            stopAnim();
             ijkMediaPlayer.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
         ijkMediaPlayer.setKeepInBackground(false);
+
+
     }
 }
