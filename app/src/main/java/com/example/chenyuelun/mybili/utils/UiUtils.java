@@ -7,6 +7,9 @@ import android.widget.Toast;
 
 import com.example.chenyuelun.mybili.common.MyApplication;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 /**
  * Created by chenyuelun on 2017/7/17.
@@ -51,5 +54,11 @@ public class UiUtils {
 
     public static Context getContext(){
         return MyApplication.getContext();
+    }
+
+    public static String getFormatDateTime(String pattern, int dateTime){
+        Date d = new Date(dateTime);
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+        return sdf.format(d);
     }
 }

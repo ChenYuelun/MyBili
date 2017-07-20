@@ -32,7 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LiveFragment extends BaseFragment {
 
-    @BindView(R.id.rv_live)
+    @BindView(R.id.recyclerview)
     RecyclerView rvLive;
     @BindView(R.id.refresh)
     SwipeRefreshLayout refresh;

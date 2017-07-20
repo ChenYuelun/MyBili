@@ -1,53 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    android:background="@drawable/live_rb_bg_ripple"
-    android:orientation="vertical">
-
-    <ImageView
-        android:id="@+id/iv_src"
-        android:layout_width="320dp"
-        android:layout_height="180dp"
-        android:scaleType="centerCrop" />
+    app:cardCornerRadius="3dp">
 
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textColor="#000"
-        android:textSize="12sp"
-        tools:text="assasssa" />
-
-
-    <FrameLayout
-
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp">
+        android:background="@drawable/live_rb_bg_ripple"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_src"
+            android:layout_width="320dp"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop" />
+
 
         <TextView
-            android:id="@+id/tv_owner_name"
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="10sp"
-            tools:text="sdfsdfsfdfs" />
+            android:ellipsize="end"
+            android:lines="2"
+            android:padding="5dp"
+            android:textColor="#000"
+            android:textSize="12sp"
+            tools:text="assasssa" />
 
 
-        <TextView
-            android:id="@+id/tv_online"
-            android:layout_width="wrap_content"
+        <FrameLayout
+
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:drawableLeft="@drawable/ic_watching"
-            android:drawablePadding="3dp"
-            android:textSize="10sp"
-            tools:text="55" />
+            android:padding="5dp">
 
-    </FrameLayout>
+            <TextView
+                android:id="@+id/tv_owner_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                tools:text="sdfsdfsfdfs" />
 
-</LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_online"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:drawableLeft="@drawable/ic_watching"
+                android:drawablePadding="3dp"
+                android:textSize="10sp"
+                tools:text="55" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
